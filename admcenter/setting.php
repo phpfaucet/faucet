@@ -90,6 +90,7 @@ header('Location:setting.php');
                     	<option value="mBTC" <?php if($db->res['value']=='mBTC') echo 'selected'; ?>>mBTC</option>
                     	<option value="Satoshi" <?php if($db->res['value']=='Satoshi') echo 'selected'; ?>>Satoshi</option>
                     	<option value="LTC" <?php if($db->res['value']=='LTC') echo 'selected'; ?>>LTC</option>
+                    	<option value="DOGE" <?php if($db->res['value']=='DOGE') echo 'selected'; ?>>DOGE</option>
                     	<option value="mDOGE" <?php if($db->res['value']=='mDOGE') echo 'selected'; ?>>mDOGE</option>
                     	<option value="PPC" <?php if($db->res['value']=='PPC') echo 'selected'; ?>>PPC</option>
                     	<option value="mPPC" <?php if($db->res['value']=='mPPC') echo 'selected'; ?>>mPPC</option>
