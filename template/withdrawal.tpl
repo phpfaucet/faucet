@@ -93,7 +93,7 @@
 </button>
 
 <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#asmoney">
-  Request a Asmoney withdrawal(${$as_min})
+  Request a Asmoney withdrawal({$as_min})
 </button>
 
 
@@ -135,11 +135,14 @@
     <input type="text" class="form-control" name="amount" placeholder="Amount to withdrawal">
   </div>
 
-
+{if {$asmoneyexist}}
+Your Asmoney account : {$asmoneyexist}
+{else}
   <div class="form-group">
     <label for="exampleInputEmail1">Wallet</label>
-    <input type="text" class="form-control" name="wallet" placeholder="Asmoney wallet">
+    <input type="text" class="form-control" name="wallet" placeholder="Asmoney username">
   </div>
+ {/if}
 
 
 
@@ -182,7 +185,14 @@
     <input type="text" class="form-control" name="amount" placeholder="Amount to withdrawal">
   </div>
 
-
+{if {$cryptoexist}}
+Your Crypto address : {$cryptoexist}
+{else}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Wallet</label>
+    <input type="text" class="form-control" name="address" placeholder="crypto address">
+  </div>
+ {/if}
 
 
        

@@ -8,8 +8,8 @@ if( isset($_POST['register'] ) ){
 	$username=$_POST['username'];
 	$password=md5($_POST['password']);
 	$address=$_POST['address'];
-	$prepare=$db->mysqli->prepare("select user_id from tbl_user where username=? or address=?");
-	$prepare->bind_param('ss',$username,$address);
+	$prepare=$db->mysqli->prepare("select user_id from tbl_user where username=?");
+	$prepare->bind_param('s',$username);
 	$prepare->execute();
 	$prepare->store_result();
 	$ucount=$prepare->num_rows;
