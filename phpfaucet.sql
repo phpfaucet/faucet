@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `parent_id` int(11) unsigned DEFAULT NULL,
   `reset` int(11) NOT NULL DEFAULT '0',
   `ip` int(10) unsigned NULL,
-  `credit` decimal(10,8) NULL DEFAULT '0',
+  `credit` decimal(20,8) NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   KEY `parent_id` (`parent_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=14 ;
