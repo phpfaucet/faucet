@@ -1,5 +1,4 @@
-<?php
-require_once "header.php";
+<?phprequire_once "header.php";
 require_once "maincore.php";
 require_once "includes/dbconnector.class.php";
 $db=new DbConnector;
