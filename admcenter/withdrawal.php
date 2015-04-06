@@ -29,7 +29,7 @@ $db=new DbConnector;
                               <tbody>    
 				<?php
 						
-					$perpage=30;
+					$perpage=20;
 					if (!isset($_GET['p']) || $_GET['p']==0 )
 						$screen = 0;
 					else

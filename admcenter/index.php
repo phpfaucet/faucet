@@ -100,12 +100,11 @@ $ppassword=$db->res['value'];
 							  
 							  
 $db->queryres("select * from tbl_config where header='currency'");
-$currency=$db->res['value'];
-
+$currency=$db->res['value'];
+function changecur(&$currency) {	switch ($currency)	{			    case "BTC" : 	    case "mBTC" :	    case "Satoshi" :			$currency="mBTC";			break;	    case "LTC" :	    case "mLTC" :			$currency="mLTC";			break;	    case "DOGE" :	    case "mDOGE" :			$currency="mDOGE";			break;	    case "PPC" :	    case "mPPC" :			$currency="mPPC";			break;	    case "DRK" :	    case "mDRK" :			$currency="mDRK";			break;	}}
 
 							  $api = new AsmoneyAPI($pusername,$papiname,$ppassword);
-
-							  
+changecur($currency);							 
 $r = $api->GetBalance($currency); // Possible values are 'EUR', 'mBTC', 'mLTC', 'GBP'
     echo $balance = $r['value'];
 	
