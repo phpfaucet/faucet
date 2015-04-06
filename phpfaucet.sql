@@ -139,14 +139,14 @@ CREATE TABLE IF NOT EXISTS `tbl_transaction` (
 
 CREATE TABLE IF NOT EXISTS `tbl_user` (
   `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ausername` varchar(200) COLLATE utf8_persian_ci NOT NULL,
+  `ausername` varchar(200) COLLATE utf8_persian_ci NULL,
   `username` varchar(200) COLLATE utf8_persian_ci NOT NULL,
   `password` varchar(200) COLLATE utf8_persian_ci NOT NULL,
-  `address` varchar(300) COLLATE utf8_persian_ci NOT NULL,
+  `address` varchar(300) COLLATE utf8_persian_ci NULL,
   `parent_id` int(11) unsigned DEFAULT NULL,
   `reset` int(11) NOT NULL DEFAULT '0',
-  `ip` int(10) unsigned NOT NULL,
-  `credit` decimal(10,8) NOT NULL,
+  `ip` int(10) unsigned NULL,
+  `credit` decimal(10,8) NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   KEY `parent_id` (`parent_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=14 ;
