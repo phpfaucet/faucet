@@ -3,9 +3,9 @@
 class SystemComponent{
 	private $settings;
 	function getSetting(){
-			$settings['dbusername']='forexeng_faucet';
-			$settings['dbpassword']='147258369'; 
-			$settings['dbname']='forexeng_faucet';
+			$settings['dbusername']='root';
+			$settings['dbpassword']='1'; 
+			$settings['dbname']='phpfaucet';
 			$settings['dbhost']='localhost';
 			return $settings;
 	}
