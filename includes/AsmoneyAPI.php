@@ -157,7 +157,7 @@ class AsmoneyAPI
 		if (strcmp($r, 'Invalid IP setup') == 0)
 			return array('result' => APIerror::InvalidIPSetup);
 		if (strcmp($r, 'Updated') == 0)
-			return array('result' => APIerror::OK, 'value' => []);
+			return array('result' => APIerror::OK, 'value' => array());
 		return array('result' => APIerror::OK, 'value' => $r);
 	}
 	
