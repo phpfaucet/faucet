@@ -17,7 +17,7 @@ function ChangetoMili($amount,&$currency) {
 	{		
 	case "BTC" : $amount = $amount * 1000;$currency="mBTC";return $amount;
 	case "mBTC" :return $amount;
-	case "Satoshi" : $amount = $amount / 10000;$currency="mBTC";return $amount;
+	case "Satoshi" : $amount = $amount / 100000;$currency="mBTC";return $amount;
 	case "LTC" :$amount = $amount * 1000;$currency="mLTC";return $amount;
 	case "mLTC" :return $amount;
 	case "DOGE" :$amount = $amount * 1000;$currency="mDOGE";return $amount;
