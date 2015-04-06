@@ -13,7 +13,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-danger text-center" role="alert">
-        The inserted <strong>username</strong> or <strong>address</strong> already exists in our database
+        The inserted <strong>username</strong> or <strong>cryptocoin address</strong> already exists in our database
         </div>
     </div>
 </div>
