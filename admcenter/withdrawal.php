@@ -89,7 +89,7 @@ $db=new DbConnector;
                     
                     
                     
-                    $db->query("select * from tbl_donate");
+                    $db->query("select * from tbl_withdrawal");
                 
                 $n=$db->rownum();
                 $page=$screen+1;
