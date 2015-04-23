@@ -27,7 +27,26 @@ if( isset($_POST['currency'] ) ){
 
 		}
 		
-	$db->queryres("SELECT * from tbl_config where header='currency'");	$curtype = $db->res['value'];	$amount=$_POST['amount'];		/*Bitcoin :  1% + 0.1 mBTCLitecoin : 1% + 1 mLTCDogecoin : 1% + 1.0 DogePeercoin : 1% + 10 mPPCDarkcoin : 1% + 1 mDRK */	switch ($curtype) {		case "BTC" :			$fees = $amount - (($amount/100.0) + 0.0001);			break;		case "mBTC" :			$fees = $amount - (($amount/100.0) + 0.1);			break;		case "Satoshi" :			$fees = $amount - (($amount/100.0) + 10000);			break;		case "LTC" :			$fees = $amount - (($amount/100.0) + 0.001);			break;		case "mLTC" :			$fees = $amount - (($amount/100.0) + 1);			break;		case "DOGE" :			$fees = $amount - (($amount/100.0) + 1);			break;		case "mDOGE" :			$fees = $amount - (($amount/100.0) + 1000);			break;		case "PPC" :			$fees = $amount - (($amount/100.0) + 0.01);			break;		case "mPPC" :			$fees = $amount - (($amount/100.0) + 10);			break;		case "DRK" :			$fees = $amount - (($amount/100.0) + 0.001);			break;		case "mDRK" :			$fees = $amount - (($amount/100.0) + 1);			break;		}
+	$db->queryres("SELECT * from tbl_config where header='currency'");
+
+	$curtype = $db->res['value'];
+	$amount=$_POST['amount'];
+	/*Bitcoin :  Transfer all payment in one transaction without fees | mBTCLitecoin : 1% + 1 mLTCDogecoin : 1% + 1.0 DogePeercoin : 1% + 10 mPPCDarkcoin : 1% + 1 mDRK */
+
+	switch ($curtype)
+	{		
+	case "BTC" :			$fees = $amount;			break;
+	case "mBTC" :			$fees = $amount;			break;
+	case "Satoshi" :		$fees = $amount;			break;
+	case "LTC" :			$fees = $amount - (($amount/100.0) + 0.001);			break;
+	case "mLTC" :			$fees = $amount - (($amount/100.0) + 1);			break;
+	case "DOGE" :			$fees = $amount - (($amount/100.0) + 1);			break;
+	case "mDOGE" :			$fees = $amount - (($amount/100.0) + 1000);			break;
+	case "PPC" :			$fees = $amount - (($amount/100.0) + 0.01);			break;
+	case "mPPC" :			$fees = $amount - (($amount/100.0) + 10);			break;
+	case "DRK" :			$fees = $amount - (($amount/100.0) + 0.001);			break;
+	case "mDRK" :			$fees = $amount - (($amount/100.0) + 1);			break;
+	}
 	$db->queryres("SELECT * FROM tbl_config where header='currencymin' ");
 		
 

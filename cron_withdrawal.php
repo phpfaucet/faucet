@@ -31,15 +31,21 @@ $db->queryres("select * from tbl_config where header='papiname'");
 $papiname=$db->res['value'];
 $db->queryres("select * from tbl_config where header='ppassword'");
 $ppassword=$db->res['value'];
+$db->queryres("select * from tbl_config where header='requestcount'");
+$requestcount=$db->res['value'];
 	
 $api = new AsmoneyAPI($pusername,$papiname, $ppassword);
 //Change to mili bitcoin because asmoney get currencies based on milicoin
 $db->query("select * from tbl_withdrawal where status=0");
 
+$btcaddresses = array();
+$btcamounts = array();
+$withdrawalid = array();
+
 while($res=$db->fetchArray()){
 
     $currency = $faucetcurrency;
-	
+		
 	if($res['type']==0){
 		$db2->queryres("select * from tbl_user where user_id='".$res['user_id']."'");
 		$ausername=$db2->res['ausername'];
@@ -79,8 +85,11 @@ while($res=$db->fetchArray()){
 		$amount = ChangetoMili($res['amount'],$currency);
 
 
-		if( $currency=='mBTC' ){			
-			$r = $api->TransferBTC($address,$amount,'mBTC','Withdrawal');			
+		if( $currency=='mBTC' ){
+			$btcaddresses[count($btcaddresses)] = $address;
+			$btcamounts[count($btcamounts)] = $amount;
+			$withdrawalid[count($withdrawalid)] = $res['withdrawal_id'];
+//			$r = $api->TransferBTC($address,$amount,'mBTC','Withdrawal');			
 		}
 		
 		
@@ -103,6 +112,7 @@ while($res=$db->fetchArray()){
 			$r = $api->TransferDOGE($address,$amount,'mDOGE','Withdrawal');
 		}
 		
+		if( $currency!='mBTC' )
 		if ($r['result'] == APIerror::OK){
 			$batchno = $r['value'];
 			$db2->query("update tbl_withdrawal set status=1,reccode='$batchno' where withdrawal_id='".$res['withdrawal_id']."'");
@@ -130,5 +140,37 @@ while($res=$db->fetchArray()){
         }    
 	}
 
+}
+
+if (count($btcamounts) > $requestcount)
+{	
+	$r = $api->TransferToManyBTC($btcaddresses,$btcamounts,'mBTC','Withdrawal');
+	if ($r['result'] == APIerror::OK){
+			$batchno = $r['value'];
+			for ($i=0;$i<count($withdrawalid);$i++) {
+			$wid = $withdrawalid[$i];
+			$db2->query("update tbl_withdrawal set status=1,reccode='$batchno' where withdrawal_id='".$wid."'");
+			}	
+            echo count($withdrawalid). " Withdrawals has been proceessed with bactch number " .$batchno. "<br>" ;
+		} else {
+		    if ($r['result'] == APIerror::InvalidUser )
+		    {		echo "Invalid User";		}
+		    if ($r['result'] == APIerror::InvalidAPIData )
+		    {		echo "API login is invalid";		}
+		    if ($r['result'] == APIerror::InvalidIP   ) 
+		    {		echo "IP is not match";		}
+		    if ($r['result'] == APIerror::InvalidIPSetup )
+		    {		echo "IP Setup invalid";		}
+		    if ($r['result'] == APIerror::InvalidCurrency ) 
+		    {		echo "Currency is not valid";		}
+		    if ($r['result'] == APIerror::InvalidReceiver ) 
+		    {		echo "Receiver is invalid";		}
+		    if ($r['result'] == APIerror::NotEnoughMoney )
+		    {		echo "Not Enough Money";		}
+		    if ($r['result'] == APIerror::APILimitReached )
+		    {		echo "API Limit Reach";		}
+		    if ($r['result'] == APIerror::Invalid )
+		    {		echo "An Error Occured";		}	
+		}
 }
 ?>

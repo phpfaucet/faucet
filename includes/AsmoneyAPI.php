@@ -111,6 +111,98 @@ class AsmoneyAPI
 			return array('result' => APIerror::APILimitReached);
 		return array('result' => APIerror::OK, 'value' => $r);
 	}
+	
+	
+	function TransferDOGE($dogeaddress, $amount, $currency, $memo)
+	{
+		$r = $this->client->transferdoge($this->username, $this->apiname, $this->password, $amount, $currency, $dogeaddress, $memo);
+		if (strcmp($r, 'Invalid user') == 0)
+			return array('result' => APIerror::InvalidUser);
+		if (strcmp($r, 'Invalid api data') == 0)
+			return array('result' => APIerror::InvalidAPIData);
+		if (strcmp($r, 'Invalid IP') == 0)
+			return array('result' => APIerror::InvalidIP);
+		if (strcmp($r, 'Invalid IP setup') == 0)
+			return array('result' => APIerror::InvalidIPSetup);
+		if (strcmp($r, 'Invalid') == 0)
+			return array('result' => APIerror::InvalidCurrency);
+		if (strcmp($r, 'The receiver is not valid') == 0)
+			return array('result' => APIerror::InvalidReceiver);
+		if (strcmp($r, 'Not enough money') == 0)
+			return array('result' => APIerror::NotEnoughMoney);
+		if (strcmp($r, 'limit') == 0)
+			return array('result' => APIerror::APILimitReached);
+		return array('result' => APIerror::OK, 'value' => $r);
+	}
+	
+		function TransferDRK($drkaddress, $amount, $currency, $memo)
+	{
+		$r = $this->client->transferdrk($this->username, $this->apiname, $this->password, $amount, $currency, $drkaddress, $memo);
+		if (strcmp($r, 'Invalid user') == 0)
+			return array('result' => APIerror::InvalidUser);
+		if (strcmp($r, 'Invalid api data') == 0)
+			return array('result' => APIerror::InvalidAPIData);
+		if (strcmp($r, 'Invalid IP') == 0)
+			return array('result' => APIerror::InvalidIP);
+		if (strcmp($r, 'Invalid IP setup') == 0)
+			return array('result' => APIerror::InvalidIPSetup);
+		if (strcmp($r, 'Invalid') == 0)
+			return array('result' => APIerror::InvalidCurrency);
+		if (strcmp($r, 'The receiver is not valid') == 0)
+			return array('result' => APIerror::InvalidReceiver);
+		if (strcmp($r, 'Not enough money') == 0)
+			return array('result' => APIerror::NotEnoughMoney);
+		if (strcmp($r, 'limit') == 0)
+			return array('result' => APIerror::APILimitReached);
+		return array('result' => APIerror::OK, 'value' => $r);
+	}
+	
+		function TransferPPC($ppcaddress, $amount, $currency, $memo)
+	{
+		$r = $this->client->transferppc($this->username, $this->apiname, $this->password, $amount, $currency, $ppcaddress, $memo);
+		if (strcmp($r, 'Invalid user') == 0)
+			return array('result' => APIerror::InvalidUser);
+		if (strcmp($r, 'Invalid api data') == 0)
+			return array('result' => APIerror::InvalidAPIData);
+		if (strcmp($r, 'Invalid IP') == 0)
+			return array('result' => APIerror::InvalidIP);
+		if (strcmp($r, 'Invalid IP setup') == 0)
+			return array('result' => APIerror::InvalidIPSetup);
+		if (strcmp($r, 'Invalid') == 0)
+			return array('result' => APIerror::InvalidCurrency);
+		if (strcmp($r, 'The receiver is not valid') == 0)
+			return array('result' => APIerror::InvalidReceiver);
+		if (strcmp($r, 'Not enough money') == 0)
+			return array('result' => APIerror::NotEnoughMoney);
+		if (strcmp($r, 'limit') == 0)
+			return array('result' => APIerror::APILimitReached);
+		return array('result' => APIerror::OK, 'value' => $r);
+	}
+	
+	//To transfer BTC to multiple receivers and pay fee for once, pass btcaddress and amount parameters as array to the following function
+	function TransferToManyBTC($btcaddress, $amount, $currency, $memo)
+	{
+		$r = $this->client->transfertomanybtc($this->username, $this->apiname, $this->password, $amount, $currency, $btcaddress, $memo);
+		if (strcmp($r, 'Invalid user') == 0)
+			return array('result' => APIerror::InvalidUser);
+		if (strcmp($r, 'Invalid api data') == 0)
+			return array('result' => APIerror::InvalidAPIData);
+		if (strcmp($r, 'Invalid IP') == 0)
+			return array('result' => APIerror::InvalidIP);
+		if (strcmp($r, 'Invalid IP setup') == 0)
+			return array('result' => APIerror::InvalidIPSetup);
+		if (strcmp($r, 'Invalid') == 0)
+			return array('result' => APIerror::InvalidCurrency);
+		if (strcmp($r, 'The receiver is not valid') == 0)
+			return array('result' => APIerror::InvalidReceiver);
+		if (strcmp($r, 'Not enough money') == 0)
+			return array('result' => APIerror::NotEnoughMoney);
+		if (strcmp($r, 'limit') == 0)
+			return array('result' => APIerror::APILimitReached);
+		return array('result' => APIerror::OK, 'value' => $r);
+	}
+	
+	
 
 	function GetTransaction($TransActionID)
 	{

@@ -42,6 +42,7 @@ $db->query("update tbl_config set value='".$_POST['minimum_donate']."' where hea
 $db->query("update tbl_config set value='".$_POST['sci_username']."' where header='sci_username'");
 $db->query("update tbl_config set value='".$_POST['sci_pass']."' where header='sci_pass'");
 
+$db->query("update tbl_config set value='".$_POST['requestcount']."' where header='requestcount'");
 
 
 
@@ -209,6 +210,20 @@ header('Location:setting.php');
                     <input type="text" class="form-control" name="currencymin" value="<?php echo $db->res['value'];?>">
             </div>
 
+			
+<?php $db->queryres("select * from tbl_config where header='requestcount'"); ?>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Minimum BTC Queue for withdrawal<small>Only for BTC faucets</small></label>
+			
+<select name="requestcount" class="form-control">
+  <option>10</option>
+  <option>20</option>
+  <option>30</option>
+  <option>40</option>
+  <option>50</option>
+</select> Current is <?php echo $db->res['value'];?>
+			
+</div>
 </fieldset>
             <div class="form-group">
 				<button name="save" class="btn btn-success" value="1">Save</button>
