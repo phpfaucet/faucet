@@ -74,7 +74,7 @@ INSERT INTO `tbl_config` (`config_id`, `header`, `value`) VALUES
 (14, 'currencymin', '1'),
 (15, 'minimum_donate', '4'),
 (16, 'sci_username', 'a'),
-(17, 'sci_pass', 'dsad');
+(17, 'sci_pass', 'dsad'),
 (18, 'requestcount', '10');
 -- --------------------------------------------------------
 
