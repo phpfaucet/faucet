@@ -16,8 +16,5 @@
 
 </div>
 </div></div>
-<<<<<<< HEAD
 {include file='template/footer.tpl'}
-=======
-{include file='template/footer.tpl'}
->>>>>>> origin/master
+
