@@ -86,18 +86,28 @@
 
 
 
+<div style="border:1px solid #ccc;padding:15px;margin-right:50px;" class="col-md-5">
+  <h3>Withdraw to AsMoney</h3>
 
-<div class="col-md-4 pull-right">
+  AsMoney is a bitcoin payment processor that allow us to send micropayments<br><br>
+  
+Withdrawal any amount without minimum<br> Payment will be proceed instantly <br>
+You can transfer your money to any cryptocoin from AsMoney<br> 
+    If you don't have AsMoney account, create a <a href="https://www.asmoney.com/default.aspx" target="a_blank">new one</a><br>
+<br><br><br>
+  
+<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#asmoney">
+  Request a AsMoney withdrawal, minimum is ({$as_min})
+</button>
+
+</div>
+
+<div class="col-md-5" style="border:1px solid #ccc;padding:15px;">
+  <h3>Withdraw to coin</h3>You can withdraw balance directly to your crypto address but you need<br><br>your balance should higher than {$cur_min}<br> Payment will be proceed with delay<br><br><br><br><br><br>
+  
 <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">
-  Request a {$curency} withdrawal({$cur_min})
+  Request a coin withdrawal, minimum is ({$cur_min})
 </button>
-
-<button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#asmoney">
-  Request a Asmoney withdrawal({$as_min})
-</button>
-
-
-
 
 </div>
 </div>
@@ -113,12 +123,33 @@
   </div>
 </div>
 
+<script type="text/javascript">
+ function checkasmoney() {
+ 
+var amount = document.asmoney.amount.value;
+var wallet = document.asmoney.wallet.value;
 
+if (amount <= 0) {
+alert('Amount is incorrect');
+return false;
+
+}
+
+if (wallet.length <= 1 ) {
+    alert('Please Enter your AsMoney username'); 
+    return false;
+}
+
+return true;
+
+}
+
+</script>
 
 <div class="modal fade" id="asmoney" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
   
-  <form action="" method="post">
+    <form action="" method="post" name="asmoney" onsubmit="return checkasmoney()">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -163,12 +194,39 @@ Your Asmoney account : {$asmoneyexist}
 
 
 
+       
+<script type="text/javascript">
+function checkcoin() {
+ 
+var address = document.coin.address.value;
+var amount = document.coin.amount.value;
 
+
+if (amount <= 0) {
+alert('Amount is incorrect');
+return false;
+
+}
+
+ if (address.length <= 15 )
+{
+    alert('Crypto address is not correct ');
+return false;
+}
+
+if(/^[a-zA-Z0-9- ]*$/.test(address) == false) {
+    alert('Crypto address is not correct ');
+return false;
+} 
+
+return true;
+}
+</script>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
   
-  <form action="" method="post">
+  <form action="" method="post" name="coin" onsubmit="return checkcoin()">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

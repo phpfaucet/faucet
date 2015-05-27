@@ -21,8 +21,27 @@
 
 
 
+<script type="text/javascript">
+ function checkform() {
+ 
+var address = document.regform.address.value;
 
-<form method="post">
+if (address == "") {
+return true;
+} else if (address.length <= 15 )
+{
+    alert('Crypto address is not correct ');
+return false;
+
+}
+ if(/^[a-zA-Z0-9- ]*$/.test(address) == false) {
+    alert('Crypto address is not correct ');
+return false;
+} 
+}
+ 
+</script>
+<form method="post" name="regform" onsubmit="return checkform()">
   <div class="form-group">
     <label>Username</label>
     <input name="username" type="text" class="form-control" placeholder="Your Username">
