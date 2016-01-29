@@ -71,7 +71,7 @@ header('Location:setting.php');
    
 			<?php $db->queryres("select * from tbl_config where header='referral_percent'"); ?><fieldset class="scheduler-border"><legend class="scheduler-border">Basic Setting</legend>
             <div class="form-group">
-                <label for="exampleInputEmail1">Refferal Percent</label>
+                <label for="exampleInputEmail1">Referral Percent</label>
                     <input type="text" class="form-control" name="referral_percent" value="<?php echo $db->res['value'];?>">
             </div>
 
